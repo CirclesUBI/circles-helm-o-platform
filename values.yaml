@@ -70,9 +70,11 @@ ingressroute:
       http:
       - name: redirect
   tls:
-    certResolver: letsencrypt-prod
-    domains:
-    - main: "{{ .Values.image.tag }}.dev.circles.land"
+    issuerRef:
+      name: letsencrypt-prod
+      kind: ClusterIssuer
+    dnsNames:
+    - "{{ .Values.image.tag }}.dev.circles.land"
 
 
 resources: {}

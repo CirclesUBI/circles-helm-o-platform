@@ -28,15 +28,6 @@ spec:
         passHostHeader: true
         port: {{ $svcPort }}
   {{- end }}
-  {{- if .Values.ingressroute.tls }}
   tls:
-    {{- with .Values.ingressroute.tls }}
     secretName: "{{ $fullName }}-tls"
-    certResolver: {{ .certResolver }}
-    domains:
-      {{- range .domains }}
-      - main: {{ tpl .main $ | quote }}
-      {{- end }}
-    {{- end }}
-  {{- end }}
 {{- end }}
