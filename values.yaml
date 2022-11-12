@@ -65,7 +65,7 @@ ingressroute:
     https:
     - websecure
   routes:
-  - host: "{{ Values.image.tag }}.dev.circles.land"
+  - host: "{{ .Values.image.tag }}.dev.circles.land"
     middlewares:
       http:
       - name: redirect
@@ -74,7 +74,7 @@ ingressroute:
       name: letsencrypt-prod
       kind: ClusterIssuer
     dnsNames:
-      - "{{ Values.image.tag }}.dev.circles.land"
+      - "{{ .Values.image.tag }}.dev.circles.land"
 
 
 resources: {}
