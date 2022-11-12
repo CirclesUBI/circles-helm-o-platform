@@ -1,0 +1,16 @@
+apiVersion: v2
+name: circles-o-platform
+description: A Helm chart for the Circles platform.
+home: https://circles.land
+
+type: application
+icon: "https://avatars.githubusercontent.com/u/60328382"
+
+version: 0.1.0
+appVersion: "1.16.0"
+
+maintainers:
+  - name: "Daniel Janz"
+    email: "daniel@circles.name"
+  - name: "Jon Richter"
+    email: "jon@circles.name"

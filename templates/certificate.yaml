@@ -1,0 +1,19 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "..fullname" . -}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $fullName }}
+spec:
+  secretName: "{{ $fullName }}-tls"
+  {{- with .Values.ingressroute.tls }}
+  issuerRef:
+    {{- range $key, $val := .issuerRef }}
+    {{ $key }}: {{ $val }}
+    {{- end }}
+  dnsNames:
+    {{- range .dnsNames }}
+    - {{ tpl . $ | quote }}
+    {{- end }}
+  {{- end }}
+{{- end }}

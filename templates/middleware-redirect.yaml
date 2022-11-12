@@ -1,0 +1,10 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "..fullname" . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ $fullName }}-redirect"
+spec:
+  redirectScheme:
+    scheme: https
+{{- end}}
